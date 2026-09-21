@@ -1,12 +1,12 @@
 from pathlib import Path
 import json
-from textwrap import indent
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
 DB_PATH = DATA_DIR / "leads.json"
 
 # CRUD
+# CREATE / READ / UPDATE / DELETE
 
 # READ
 def read_leads():
@@ -23,4 +23,20 @@ def create_lead(lead_dict):
     leads = read_leads()
     leads.append(lead_dict)
     DB_PATH.write_text(json.dumps(leads, ensure_ascii=False, indent=2), encoding="utf-8")
-    # criar arquivo sem ler todos
+
+# BUSCAR LEADS
+def read_leads_search(query):
+    """
+        Função que recebe uma query (busca de nome ou email) no leads.json
+         e RETORNA uma lista com os resultadso
+    """
+    leads = read_leads()
+    results = []
+
+    for i, lead in enumerate(leads):
+        txt_lead = f"{lead["name"]} {lead["email"]}".lower()
+
+        if query.lower() in txt_lead:
+            results.append((i, lead))
+
+    return results
