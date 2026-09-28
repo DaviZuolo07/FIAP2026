@@ -22,5 +22,6 @@ aluno1.adicionar_nota(DSA, 9)
 
 notas_ia = aluno1.media_por_disciplina(prompt_ia)
 print(notas_ia)
-
+print("----")
 print(aluno1.media_geral())
+

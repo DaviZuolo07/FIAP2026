@@ -49,4 +49,4 @@ class Aluno:
             print(f"Notas do aluno em: {d.nome}: {notas}")
             print(f"Média do aluno em: {d.nome}: {media_d}")
 
-            print(f"Média Geral: (self.media_geral()}")
+        print(f"Média Geral: {self.media_geral()}")
